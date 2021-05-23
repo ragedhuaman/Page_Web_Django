@@ -1,0 +1,14 @@
+First Step
+  **Iniciar el proyecto**
+   
+	django-admin startproject "Nombre del proyecto"
+
+  **Crear un app**
+
+	python manage.py startapp "Nombre del app"
+
+  **Si hacemos cambios en los modelos tenemos que:
+	
+	python manage.py makemigrations 
+	
+	python manage.py migrate 
