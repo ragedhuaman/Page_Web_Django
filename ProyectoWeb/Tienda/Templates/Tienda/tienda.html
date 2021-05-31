@@ -3,6 +3,37 @@
 {% load static %}
 
 {% block content %}
+<div class="contenido" style="display:grid;grid-template-columns: 3fr 1fr;">
+  <div class="container">
+    <div class="row">
+      {% for producto in productos %}
+      <div class="col-md-3">
+          <div class="card" style="width:100% ;margin:10px 10px">
+            <img class="card-img-top" src="{{producto.img.url}}" alt="" style="object-fit:cover;">
+            <div class="car-body" style="text-align:center">
+              <h2 class="card-title">{{producto.nombre}}</h2>
+              <p class="card-text">{{producto.precio}}</p>
+            </div>
+            <div class="card-footer text-center">
+              <a href="{% url 'Agregar' producto.id %}" class="btn" style="background-color: aquamarine;color:black">Agregar al carro</a>
+            </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div> 
+  </div>
+  <div class="carrito" style="margin:15px">
+    {% include 'carro/widget.html' %}
+</div>
+</div>
 
+  <section>
+    <div style="color:white;margin: auto; width: 75%;padding: 20px; text-align: center; display: flex;justify-content: center;">
+        Categorias:
+        {% for categoria in categorias %}
+            <div style="text-transform: uppercase; padding:0 20px;"><a class="link-categoria" href="{% url 'ProductoByCategoria' categoria.id %}">{{categoria.nombre}}</a></div>
+        {% endfor %}
+    </div>     
+  </section>
 
 {% endblock %}
